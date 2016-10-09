@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+<struts>
+	<!-- 指定全局国际化资源文件 -->
+	<constant name="struts.custom.i18n.resources" value="mess" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+	<constant name="struts.devMode" value="false" />
+	<!-- 所有的Action定义都应该放在package下 -->
+	<package name="crazyit" namespace="/" extends="struts-default">
+
+		<!-- 通过用户点击图书标题 搜索图书和作者的详细信息 -->
+		<action name="search_book_detial" class="ActionPackage.SABDetialByBSAction">
+			<result name="error">/WEB-INF/content/error.jsp</result>
+			<result name="success">/WEB-INF/content/showDetailInformation.jsp
+			</result>
+		</action>
+
+
+		<!-- 展示所有图书 -->
+		<action name="show_all_books" class="ActionPackage.ShowAllBooksAction">
+			<result name="error">/WEB-INF/content/error.jsp</result>
+			<result name="success">/WEB-INF/content/showAllBooks.jsp</result>
+		</action>
+
+		<!-- 展示所有作者 -->
+		<action name="show_all_authors" class="ActionPackage.ShowAllAuthorsAction">
+			<result name="error">/WEB-INF/content/error.jsp</result>
+			<result name="success">/WEB-INF/content/showAllAuthors.jsp</result>
+		</action>
+
+		<!-- 添加作者-->
+		<action name="addAuthor" class="ActionPackage.AddAuthorAction">
+			<result name="error">/WEB-INF/content/error.jsp</result>
+			<result name="success">/WEB-INF/content/loginForm.jsp</result>
+		</action>
+
+		<!-- 添加图书 -->
+		<action name="addBook" class="ActionPackage.AddBookAction">
+			<result name="error">/WEB-INF/content/error.jsp</result>
+			<result name="success">/WEB-INF/content/loginForm.jsp</result>
+			<result name="input">/WEB-INF/content/addNewAuthorInput.jsp</result>
+		</action>
+
+		<!-- 添加更新操作 -->
+		<action name="up" class="ActionPackage.UpdateAction">
+			<result name="error">/WEB-INF/content/error.jsp</result>
+			<result name="success">/WEB-INF/content/loginForm.jsp</result>
+			<result name="input">/WEB-INF/content/addNewAuthorInput.jsp</result>
+		</action>
+
+		<!-- 通过作者的名字搜索全部图书 -->
+		<action name="search_book" class="ActionPackage.SBookByANAction">
+			<result name="error">/WEB-INF/content/error.jsp</result>
+			<result name="success">/WEB-INF/content/welcome.jsp</result>
+		</action>
+
+		<!-- 通过删除按钮删掉对应图书 -->
+		<action name="delete_a_book" class="ActionPackage.DeleteBookAction">
+			<result name="error">/WEB-INF/content/error.jsp</result>
+			<result name="success">/WEB-INF/content/yes.jsp</result>
+		</action>
+
+		<action name="*">
+			<result>/WEB-INF/content/{1}.jsp</result>
+		</action>
+	</package>
+</struts>
